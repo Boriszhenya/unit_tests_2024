@@ -28,11 +28,5 @@ public class PasswordValidator {
             return validationMsg + "Please, try again.";
         }
     }
-
-    public static void main(String[] args) {
-        String input = "Nooooooooooo';%^$#^1";
-        String result = validatePassword(input);
-        System.out.println(result);
-    }
 }
 
