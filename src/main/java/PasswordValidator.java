@@ -5,6 +5,10 @@ public class PasswordValidator {
     public static String validatePassword(String input) {
         Pattern password = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$");
 
+        if (input==null) {
+            return (" The input field is null. Please, try again.");
+        }
+
         Matcher matcher = password.matcher(input);
 
         if (matcher.matches()) {
@@ -24,10 +28,8 @@ public class PasswordValidator {
             if (!input.matches("^.{6,20}$")) {
                 validationMsg.append(" be longer than 6 and shorter than 20 symbols; ");
             }
-
             return validationMsg + "Please, try again.";
         }
     }
-
 }
 

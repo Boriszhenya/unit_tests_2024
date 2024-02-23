@@ -74,16 +74,6 @@ public class ComplexNumberExtractor {
             return 0;
         return Integer.parseInt(numericString);
     }
-    /*
-    public static void main(String[] args) {
-        String[] input = {
-                "123-4567 890-1234 abc777 def111 888 special",
-                "265-1735 25-175-2000 qwe500 BLA-BLA rty0"
-        };
-        for (String s : input) {
-            List<Integer> numbers = extractNumbers(s);
-            System.out.println("Extracted numbers: " + numbers);
-        }
-    }
-    */
+
+
 }

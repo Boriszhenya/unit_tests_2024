@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class PasswordValidatorTest {
@@ -31,71 +32,98 @@ public class PasswordValidatorTest {
         );
     }
 
-//    @Test
-//    public void testNegativeDigitBig() {
-//        String password = "Boris_Test_.1255458454";
-//
-//        assertEquals(
-//                validationMsg.append(messageErrorSmall).append(validationMsgEnd).toString(),
-//                PasswordValidator.validatePassword(password)
-//        );
-//    }
+    @Test
+    public void testNegativeDigitBig() {
+        String password = "Boris_Test_.1255458454";
+
+        assertEquals(
+                validationMsg.append(messageErrorSmall).append(validationMsgEnd).toString(),
+                PasswordValidator.validatePassword(password)
+        );
+    }
 
     @Test
-    public void testNegativeNull() {
-
+    public void NegativeNullTest() {
         try {
             PasswordValidator.validatePassword(null);
         } catch (Exception e) {
-
             assertEquals(e.getClass(), java.lang.NullPointerException.class);
             assertEquals(e.getMessage(), "Cannot invoke \"java.lang.CharSequence.length()\" because \"this.text\" is null");
         }
     }
 
     @Test
-    public void testNegativeUppercaseLetter() {
-        String password = "boris.54";
+    public void testNegativeNull() {
 
         assertEquals(
-                validationMsg.append(messageErrorUppercaseLetter).append(validationMsgEnd).toString(),
-                PasswordValidator.validatePassword(password));
-    }
-
-    @Test
-    public void testNegativeLowercaseLetter() {
-        String password = "BORISZ54";
-
-        assertEquals(
-                validationMsg.append(messageErrorLowercaseLetter).append(validationMsgEnd).toString(),
-                PasswordValidator.validatePassword(password)
+                " The input field is null. Please, try again.",
+                PasswordValidator.validatePassword(null)
         );
     }
 
-    @Test
-    public void testNegativeDigit() {
-        String password = "BorisTest";
 
-        assertEquals(
-                validationMsg.append(messageErrorDigit).append(validationMsgEnd).toString(),
-                PasswordValidator.validatePassword(password)
-        );
-    }
 
-//    @Test
-//    public void testAllNegative() {
-//        String password = "";
-//
-//        assertEquals(
-//                validationMsg
-//                        .append(messageErrorDigit)
-//                        .append(messageErrorLowercaseLetter)
-//                        .append(messageErrorUppercaseLetter)
-//                        .append(messageErrorSmall)
-//                        .append(validationMsgEnd)
-//                        .toString(),
-//                PasswordValidator.validatePassword(password)
-//        );
-//    }
+@Test
+public void testNegativeUppercaseLetter() {
+    String password = "boris.54";
+
+    assertEquals(
+            validationMsg
+                    .append(messageErrorUppercaseLetter)
+                    .append(validationMsgEnd)
+                    .toString(),
+            PasswordValidator.validatePassword(password)
+    );
+}
+
+@Test
+public void testNegativeLowercaseLetter() {
+    String password = "BORISZ54";
+
+    assertEquals(
+            validationMsg
+                    .append(messageErrorLowercaseLetter)
+                    .append(validationMsgEnd)
+                    .toString(),
+            PasswordValidator.validatePassword(password)
+    );
+}
+
+@Test
+public void testNegativeDigit() {
+    String password = "BorisTest";
+
+    assertEquals(
+            validationMsg
+                    .append(messageErrorDigit)
+                    .append(validationMsgEnd)
+                    .toString(),
+            PasswordValidator.validatePassword(password)
+    );
+}
+
+@Test
+public void testAllNegative() {
+    String password = "";
+
+    assertEquals(
+            validationMsg
+                    .append(messageErrorDigit)
+                    .append(messageErrorLowercaseLetter)
+                    .append(messageErrorUppercaseLetter)
+                    .append(messageErrorSmall)
+                    .append(validationMsgEnd)
+                    .toString(),
+            PasswordValidator.validatePassword(password)
+    );
+}
+
+@Test
+public void testNewInstance() {
+    Object obj = new PasswordValidator();
+
+    assertTrue( obj instanceof PasswordValidator);
+}
+
 
 }
